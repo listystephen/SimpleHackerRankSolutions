@@ -1,0 +1,33 @@
+
+Problem : Plus Minus Fraction 
+------------------------------
+
+
+
+Given an array of integers, calculate which fraction of its elements are positive, which fraction of 
+its elements are negative, and which fraction of its elements are zeroes, respectively. Print the 
+decimal value of each fraction on a new line.
+
+
+
+import sys
+
+
+n = int(raw_input().strip())
+arr = map(int,raw_input().strip().split(' '))
+p = 0.0
+ne = 0.0
+z = 0.0
+
+for i in  arr:
+    if i > 0:
+        p = p+1
+    elif i <= -1:
+        ne = ne+1
+    elif i == 0:
+        z = z+1
+        
+        
+print "%.6f" % (p/n)
+print "%.6f" % (ne/n)
+print "%.6f" % (z/n)

@@ -1,0 +1,60 @@
+Problem
+---------
+Sherlock and Squares
+-------------------------
+
+Watson gives two integers ( A and B) to Sherlock and asks if he can count the number of square integers between A and  B
+(both inclusive).
+
+Note: A square integer is an integer which is the square of any integer. For example, 1, 4, 9, and 16 are some of
+ the square integers as they are squares of 1, 2, 3, and 4, respectively.
+
+Input Format
+
+The first line contains T, the number of test cases. T test cases follow, each in a new line. 
+Each test case contains two space-separated integers denoting A and B.
+
+
+
+1< = T <= 100
+1<=A<=B<=10^9
+
+
+
+
+
+
+
+
+
+
+#!/bin/python
+
+import sys
+import math
+
+def squares(a, b):
+    return int(math.floor(math.sqrt(b))-math.ceil(math.sqrt(a))+1)
+#-----------------------------------------------------------------
+#Iteration wont work for large range of integers 
+
+
+#    count = 0
+#    j = 1
+#    for i in xrange(a, b+1):
+#        while j*j <= i:
+#            if j*j == i:
+#                count+=1
+#            j+=1
+#    return count
+#-----------------------------------------------------------------        
+    
+
+if __name__ == "__main__":
+    q = int(raw_input().strip())
+    for a0 in xrange(q):
+        a, b = raw_input().strip().split(' ')
+        a, b = [int(a), int(b)]
+        result = squares(a, b)
+        print result
+

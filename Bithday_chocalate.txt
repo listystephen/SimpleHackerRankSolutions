@@ -1,0 +1,36 @@
+Problem
+--------
+Saved as image
+
+
+#!/bin/python
+
+import sys
+from collections import deque
+
+# Slide window and returing the list
+
+def solve(s,m):
+    it = iter(s)
+    win = deque((next(it, None) for _ in xrange(m)), maxlen=m)
+    yield win
+    append = win.append
+    for e in it:
+        append(e)
+        yield win
+         
+#        if sum1 == d:
+#           count+=1   
+#       sum1 = 0            
+# Complete this function
+
+n = int(raw_input().strip())
+s = map(int, raw_input().strip().split(' '))
+d, m = raw_input().strip().split(' ')
+d, m = [int(d), int(m)]
+result = 0
+#result = solve(n, s, d, m)
+for each in solve(s, m):
+    if sum(list(each)) == d:
+        result+=1   
+print(result)

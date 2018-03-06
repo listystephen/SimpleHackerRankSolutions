@@ -1,0 +1,50 @@
+Jumping on the Clouds: Revisited
+----------------------------------
+Problem
+--------
+n
+Aerith is playing a cloud game! In this game, there are  clouds numbered sequentially from 0 to n-1. Each cloud is either
+ an ordinary cloud or a thundercloud.
+
+Aerith starts out on cloud 0 with energy level E = 100. She can 1 use  unit of energy to make a jump of size k to cloud
+(i+k)%n , and she 
+jumps until she gets back to cloud . If Aerith lands on a thundercloud 0, her energy (E) decreases by  additional units. 
+The game ends when Aerith lands back on cloud .
+
+Given the values of n, k, and the configuration of the clouds, can you determine the final value of E after the game ends?
+
+Note: Recall that % refers to the modulo operation.
+
+Input Format
+
+The first line contains two space-separated integers,n  (the number of clouds) and k (the jump distance), respectively. 
+The second line contains  n space-separated integers describing the respective values of clouds c0,c1...cn-1. Each cloud is described as follows:
+
+If ci = 0, then cloud  is an ordinary cloud.
+If ci =1, then cloud  is a thundercloud.
+
+
+import sys
+
+def jumpingOnClouds(c, k):
+    E = 100
+    result = 100
+    n = len(c)
+    d = dict(enumerate(c))
+    for i in range(k,n+1,k):
+        result = (i+k)%n
+        if d[result] == 1:
+            E-=3
+        elif d[result] == 0:
+            E-=1
+      
+                
+    return E
+    # Complete this function
+
+if __name__ == "__main__":
+    n, k = raw_input().strip().split(' ')
+    n, k = [int(n), int(k)]
+    c = map(int, raw_input().strip().split(' '))
+    result = jumpingOnClouds(c, k)
+    print result

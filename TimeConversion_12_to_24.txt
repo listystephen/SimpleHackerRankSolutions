@@ -1,0 +1,39 @@
+Problem
+--------
+
+Given a time in 12-hour AM/PM format, convert it to military (24-hour) time.
+Note: Midnight is 12:00:00 AM  on a 12-hour clock, and 00:00:00 on a 24-hour clock. Noon is 12:00:00PM on a 12-hour clock, and  on a 12:00:00-hour clock.
+
+
+
+
+
+
+
+#!/bin/python
+
+import sys
+
+def timeConversion(s):
+    # Complete this function
+    if "PM" in s[2]:
+        if s[0] == "12":
+            s[2] = s[2].rstrip("PM")
+            return s[0] +":"+s[1]+":"+s[2]
+        s[0] = int(s[0])+12
+        s[0] = str(s[0])
+        s[2] = s[2].rstrip("PM")
+        return s[0] +":"+s[1]+":"+s[2]
+    elif "AM" in s[2] and s[0] == "12":
+        s[0] = "00"
+        s[2] = s[2].rstrip("AM")
+        return s[0] +":"+s[1]+":"+s[2]
+    else:
+        s[2] = s[2].rstrip("AM")
+        return s[0] +":"+s[1]+":"+s[2]
+        
+
+s = raw_input().strip().split(':')
+#print int(s[0])
+result = timeConversion(s)
+print(result)

@@ -1,0 +1,28 @@
+Viral Advertising
+-------------------
+
+Problem : screen shot
+
+
+#!/bin/python
+
+import sys
+import math
+
+def viralAdvertising(n):
+    sum1 = 5
+    result = 0
+    l = [2]
+    while n>1:
+        result = (sum1/2)*3
+        sum1 = result
+        l.append(sum1/2)
+        n-=1
+    return sum(l)
+        
+    # Complete this function
+
+if __name__ == "__main__":
+    n = int(raw_input().strip())
+    result = viralAdvertising(n)
+    print result

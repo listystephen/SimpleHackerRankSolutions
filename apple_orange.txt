@@ -1,0 +1,38 @@
+
+Problem
+--------
+
+Problem statement saved as image
+
+
+#!/bin/python
+
+import sys
+
+def appleAndOrange(s, t, a, b, apple, orange):
+    ap = 0
+    og = 0
+    for i in range(len(apple)):
+        if s <= (a+apple[i]) <= (t):
+            ap+=1
+    for j in range(len(orange)):
+        if s <= (b+orange[j]) <= (t):
+            og+=1
+    return ap, og 
+        
+        
+    # Complete this function
+
+if __name__ == "__main__":
+    s, t = raw_input().strip().split(' ')
+    s, t = [int(s), int(t)]
+    a, b = raw_input().strip().split(' ')
+    a, b = [int(a), int(b)]
+    m, n = raw_input().strip().split(' ')
+    m, n = [int(m), int(n)]
+    apple = map(int, raw_input().strip().split(' '))
+    orange = map(int, raw_input().strip().split(' '))
+    result = appleAndOrange(s, t, a, b, apple, orange)
+    print "\n".join(map(str, result))
+
+

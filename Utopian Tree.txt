@@ -1,0 +1,47 @@
+Utopian Tree
+-------------
+
+Problem
+--------
+
+The Utopian Tree goes through 2 cycles of growth every year. Each spring, it doubles in height. Each summer, its height 
+increases by 1 meter.
+
+Laura plants a Utopian Tree sapling with a height of 1 meter at the onset of spring. How tall will her tree be after N
+growth cycles?
+
+Input Format
+------------
+
+The first line contains an integer, T , the number of test cases. 
+T subsequent lines each contain an integer, N , denoting the number of cycles for that test case.
+
+
+
+#!/bin/python
+
+import sys
+import math
+
+def utopianTree(n):
+    h = 1
+    if n == 0:
+        return h
+    
+    elif n%2 != 0:
+        p = int(math.ceil(n/2.0))
+        h = 2 * (1-(2**p))/(1-2)
+        return h
+    
+    else:
+        p = n/2
+        h = 2 * (1-(2**p))/(1-2)
+        return h+1
+    
+
+if __name__ == "__main__":
+    t = int(raw_input().strip())
+    for a0 in xrange(t):
+        n = int(raw_input().strip())
+        result = utopianTree(n)
+        print result

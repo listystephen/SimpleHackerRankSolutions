@@ -1,0 +1,48 @@
+Problem
+-------
+Jumping on the Clouds
+----------------------
+
+Emma is playing a new mobile game involving n clouds numbered from 0 to n-1. A player initially starts out on cloud c0, 
+and they must jump to cloud cn-1. In each step, she can jump from any cloud i to cloud i+1 or cloud i+2.
+
+There are two types of clouds, ordinary clouds and thunderclouds. The game ends if Emma jumps onto a thundercloud, 
+but if she reaches the last cloud (i.e.,cn-1 ), she wins the game!
+
+
+
+Can you find the minimum number of jumps Emma must make to win the game? It is guaranteed that clouds c0 and cn-1 are 
+ordinary-clouds and it is always possible to win the game.
+
+
+
+
+#!/bin/python
+
+import sys
+
+def jumpingOnClouds(c):
+    count = 0
+    i = 0
+    b = len(c)-1
+    while i <= b-2:
+        i+=2
+        if c[i] == 0:
+            count+=1
+            
+        else:
+            i-=1
+            count+=1
+    if i == b :   
+        return count
+    else: 
+        return count+1     
+        
+        
+    # Complete this function
+
+if __name__ == "__main__":
+    n = int(raw_input().strip())
+    c = map(int, raw_input().strip().split(' '))
+    result = jumpingOnClouds(c)
+    print result

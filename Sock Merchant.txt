@@ -1,0 +1,36 @@
+Problem
+-------
+
+John works at a clothing store and he's going through a pile of socks to find the number of matching pairs.
+ More specifically, he has a pile of n loose socks i where each sock  is labeled with an integer ci, , denoting its color.
+ He wants to sell as many socks as possible, but his customers will only buy them in matching pairs. Two socks, i and j, 
+are a single matching pair if they have the same color (ci=cj).
+
+Given  and the color of each sock, how many pairs of socks can John sell?
+
+Input Format :
+
+The first line contains an integer n , denoting the number of socks. 
+The second line contains n space-separated integers describing the respective values of c0,c1,c2...cn-1.
+
+
+
+#!/bin/python
+
+import sys
+import collections
+
+def sockMerchant(n, ar):
+    count = []
+    counter = collections.Counter(ar)
+#   print counter
+    for k,v in counter.iteritems():
+        count.append(v/2)
+    return sum(count)
+    
+
+
+n = int(raw_input().strip())
+ar = map(int, raw_input().strip().split(' '))
+result = sockMerchant(n, ar)
+print(result)

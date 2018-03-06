@@ -1,0 +1,47 @@
+Problem
+-------
+
+When you select a contiguous block of text in a PDF viewer, the selection is highlighted with a blue rectangle. 
+In a new kind of PDF viewer, the selection of each word is independent of the other words; this means that each 
+rectangular selection area forms independently around each highlighted word. For example:
+
+PDF-highighting.png
+
+In this type of PDF viewer, the width of the rectangular selection area is equal to the number of letters in the word 
+times the width of a letter, and the height is the maximum height of any letter in the word.
+
+Consider a word consisting of lowercase English alphabetic letters, where each letter is  wide. Given the height of 
+each letter in millimeters (mm), find the total area that will be highlighted by blue rectangle in mm^2 when the given word 
+is selected in our new PDF viewer.
+
+Input Format
+
+The first line contains 26 space-separated integers describing the respective heights of each consecutive lowercase 
+English letter (i.e., ha,hb,.....hy,hz). 
+The second line contains a single word, consisting of lowercase English alphabetic letters.
+
+
+
+#!/bin/python
+
+import sys
+import string
+
+def designerPdfViewer(h, word):
+    My_dict = dict(zip(string.ascii_lowercase, h))
+    pos = []
+    for key,val in My_dict.iteritems():
+        for i in list(word):
+            if i == key:
+                pos.append(My_dict[key])
+    
+    return max(pos)*len(list(word))         
+        
+    
+   #
+
+if __name__ == "__main__":
+    h = map(int, raw_input().strip().split(' '))
+    word = raw_input().strip()
+    result = designerPdfViewer(h, word)
+    print result

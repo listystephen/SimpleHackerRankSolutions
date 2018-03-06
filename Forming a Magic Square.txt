@@ -1,0 +1,100 @@
+Problem
+--------
+
+We define a magic square to be an n x n matrix of distinct positive integers from  1 to n^2 where the sum of any row, column, or 
+diagonal (of length n ) is always equal to the same number (i.e., the magic constant).
+
+Consider a (3 x 3) matrix, s , of integers in the inclusive range [1-9]. We can convert any digit,a , to any other digit, b, in the 
+range [,9  at cost |a-b| .
+
+Given , convert it into a magic square at minimal cost by changing zero or more of its digits. Then print this cost 
+on a new line.
+
+Note: The resulting magic square must contain distinct integers in the inclusive range [1-9] .
+
+Input Format
+
+There are 3 lines of input. Each line describes a row of the matrix in the form of 3 space-separated integers 
+denoting the respective first, second, and third elements of that row.
+
+
+
+
+
+#!/bin/python
+
+import sys
+
+def formingMagicSquare(s,s_mat1,s_mat2,s_mat3,s_mat4, s_mat5, s_mat6, s_mat7, s_mat8):
+    count1 = 0
+    count2 = 0
+    count3 = 0
+    count4 = 0
+    count5 = 0
+    count6 = 0
+    count7 = 0
+    count8 = 0
+    
+    for i in range(len(s)):
+        for j in range(len(s_mat1)):
+            if s[i][j]!=s_mat1[i][j]:
+                count1 = count1+abs(s[i][j]-s_mat1[i][j])
+                
+    for i in range(len(s)):
+        for j in range(len(s_mat2)):
+            if s[i][j]!=s_mat2[i][j]:
+                count2 = count2+abs(s[i][j]-s_mat2[i][j])
+                
+    for i in range(len(s)):
+        for j in range(len(s_mat3)):
+            if s[i][j]!=s_mat3[i][j]:
+                count3 = count3+abs(s[i][j]-s_mat3[i][j])
+                
+    for i in range(len(s)):
+        for j in range(len(s_mat4)):
+            if s[i][j]!=s_mat4[i][j]:
+                count4 = count4+abs(s[i][j]-s_mat4[i][j])
+                                
+    for i in range(len(s)):
+        for j in range(len(s_mat5)):
+            if s[i][j]!=s_mat5[i][j]:
+                count5 = count5+abs(s[i][j]-s_mat5[i][j])
+                                
+    for i in range(len(s)):
+        for j in range(len(s_mat6)):
+            if s[i][j]!=s_mat6[i][j]:
+                count6 = count6+abs(s[i][j]-s_mat6[i][j])
+                                
+    for i in range(len(s)):
+        for j in range(len(s_mat7)):
+            if s[i][j]!=s_mat7[i][j]:
+                count7 = count7+abs(s[i][j]-s_mat7[i][j])
+                                
+    for i in range(len(s)):
+        for j in range(len(s_mat8)):
+            if s[i][j]!=s_mat8[i][j]:
+                count8 = count8+abs(s[i][j]-s_mat8[i][j])
+                               
+                
+                
+    return min(count1, count2, count3, count4, count5, count6, count7, count8)
+                
+    
+    
+if __name__ == "__main__":
+    s = []
+    s_mat1 = [[4,9,2], [3,5,7], [8,1,6]]
+    s_mat2 = [[8,3,4], [1,5,9], [6,7,2]]
+    s_mat3 = [[6,1,8], [7,5,3], [2,9,4]]
+    s_mat4 = [[2,7,6], [9,5,1], [4,3,8]]    
+    s_mat5 = [[8,1,6], [3,5,7], [4,9,2]]
+    s_mat6 = [[6,7,2], [1,5,9], [8,3,4]]
+    s_mat7 = [[2,9,4], [7,5,3], [6,1,8]]
+    s_mat8 = [[4,3,8], [9,5,1], [2,7,6]]
+    
+    
+    for s_i in xrange(3):
+        s_temp = map(int,raw_input().strip().split(' '))
+        s.append(s_temp)
+    result = formingMagicSquare(s,s_mat1,s_mat2,s_mat3,s_mat4 , s_mat5, s_mat6, s_mat7, s_mat8)
+    print result

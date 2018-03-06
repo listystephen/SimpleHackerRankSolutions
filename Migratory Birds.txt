@@ -1,0 +1,33 @@
+
+Problem 
+-------
+A flock of n birds is flying across the continent. Each bird has a type, and the different types are designated by 
+the ID numbers 1,2 ,3 , 4, and 5. Given an array of  integers where each integer describes the type of a bird in the
+flock, find and print the type number of the most common bird. If two or more types of birds are equally common,
+ choose the type with the smallest ID number.
+
+Input Format:
+
+The first line contains an integer denoting n (the number of birds). 
+The second line contains n  space-separated integers describing the respective type numbers of each bird in the flock.
+
+
+
+
+
+#!/bin/python
+
+import sys
+import collections
+
+def migratoryBirds(ar):
+    #dictionary
+    counter = collections.Counter(ar)
+# or(correct)   return(max(counter, key=lambda i: counter[i]))
+    return(max(counter, key=counter.get))
+   
+
+n = int(raw_input().strip())
+ar = map(int, raw_input().strip().split(' '))
+result = migratoryBirds(ar)
+print(result)

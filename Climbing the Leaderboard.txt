@@ -1,0 +1,98 @@
+Problem
+--------
+
+Alice is playing an arcade game and wants to climb to the top of the leaderboard. Can you help her track her ranking as 
+she beats each level? The game uses Dense Ranking, so its leaderboard works like this:
+
+The player with the highest score is ranked number 1  on the leaderboard.
+Players who have equal scores receive the same ranking number, and the next player(s) receive the immediately following 
+ranking number.
+For example, four players have the scores 100, 90 , 90, and 80. Those players will have ranks 1, 2,2 , and 3, respectively.
+
+When Alice starts playing, there are already n people on the leaderboard. The score of each player i is denoted by Si.
+ Alice plays for m levels, and we denote her total score after passing each level j  as Alice_j. After completing each level, 
+Alice wants to know her current rank.
+
+You are given an array, scores , of monotonically decreasing leaderboard scores, and another array, alice, of Alice's cumulative 
+scores for each level of the game. You must print m integers. The j th integer should indicate the current rank of alice 
+after passing the jth level.
+
+Input Format
+
+The first line contains an integer, n, denoting the number of players already on the leaderboard. 
+The next line contains n space-separated integers describing the respective values of Score0, score1.....scoren-1. 
+The next line contains an integer, , denoting the number of levels Alice beats. 
+The last line contains m space-separated integers describing the respective values of alice0, alice1,.....alice m-1 .
+
+
+
+
+
+
+
+
+
+#!/bin/python
+
+import sys
+import collections
+
+arr = []
+def climbingLeaderboard(scores, alice):
+    scores = sorted(set(scores), reverse = True)
+    n = len(scores)
+    for i in alice:
+        while (n > 0 and i >= scores[n-1]):
+            n -=1
+        arr.append(n+1)
+    return arr
+ 
+# Working solution for small input only
+#----------------------------------------------------------------------------------------
+#        res = []
+#    for i in alice:
+#        scores.append(i)
+#        counter = collections.Counter(scores)
+#        counter = sorted(counter.iteritems(), key=lambda (k,v): (k,v), reverse = True)
+#        for count, (key, value) in enumerate(counter, 1):
+#            if key == i:
+#               res.append(count)
+#    return res
+#-------------------------------------------------------------------------------------------
+    
+    
+#    counter = collections.Counter(scores)  
+#    print counter
+#    counter = sorted(counter.iteritems(), key=lambda (k,v): (k,v), reverse = True)
+#    for key, val in  count_Alice.items():
+#        counter.append({key: val})
+#        counter = sorted(counter.iteritems(), key=lambda (k,v): (k,v), reverse = True)
+#        print counter   count_Alice = collections.Counter(alice)  
+#----------------------------------------------------------------------------------------------       
+
+if __name__ == "__main__":
+    n = int(raw_input().strip())
+    scores = map(int, raw_input().strip().split(' '))
+    m = int(raw_input().strip())
+    alice = map(int, raw_input().strip().split(' '))
+    result = climbingLeaderboard(scores, alice)
+    print "\n".join(map(str, result))
+
+
+
+
+
+
+
+#res = {n:j for j,n in list(enumerate(sorted(set(scores)), 1))}
+#return [res[n] for n in scores] 
+
+# set(scores) <==== removing duplicates
+
+leaderboard = sorted(set(scores), reverse = True)
+l = len(leaderboard)
+
+for a in alice:
+    while (l > 0) and (a >= leaderboard[l-1]):
+        l -= 1
+    print l+1

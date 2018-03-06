@@ -1,0 +1,60 @@
+Non-Divisible Subset
+--------------------
+
+
+Problem
+--------
+Given a set, S, of n distinct integers, print the size of a maximal subset,S' , of S where the sum of any 2 numbers in S' is not 
+evenly divisible by k.
+
+Input Format
+
+The first line contains 2 space-separated integers, n  and k, respectively. 
+The second line contains n space-separated integers (we'll refer to the i^th value as ai ) describing the unique values of the set.
+
+
+
+
+
+
+
+#!/bin/python
+
+import sys
+
+def nonDivisibleSubset(k, arr):
+    d = {x:[] for x in range(k)}
+#    print d
+    for i in range(n):
+        r = arr[i]%k
+        d[r].append(arr[i])
+#    print d[0]
+    count = 0
+    if len(d[0]) > 0:
+        count = 1
+    set1 = set([(x,k-x) for x in range(1,k//2 +1)])
+#    print set1
+    for i,j in set1:
+        if i != j:
+            if len(d[i]) > len(d[j]):
+                count += len(d[i])
+            else:
+                count += len(d[j])
+        else:
+            if len(d[i]) > 0:
+                count += 1
+    return count
+            
+            
+    
+
+    
+                
+    # Complete this function
+
+if __name__ == "__main__":
+    n, k = raw_input().strip().split(' ')
+    n, k = [int(n), int(k)]
+    arr = map(int, raw_input().strip().split(' '))
+    result = nonDivisibleSubset(k, arr)
+    print result

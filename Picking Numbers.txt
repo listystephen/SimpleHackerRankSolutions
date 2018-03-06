@@ -1,0 +1,76 @@
+ Problem
+----------
+
+Given an array of integers, find and print the maximum number of integers you can select from the array such that 
+the absolute difference between any two of the chosen integers is <= 1 .
+
+Input Format
+
+The first line contains a single integer,n , denoting the size of the array. 
+The second line contains n space-separated integers describing the respective values of a0, a1, ...... an-1.
+
+Constraints:
+
+2< =n < = 100
+
+0 < ai < 100
+
+The answer will be > = 2.
+
+
+
+
+#!/bin/python
+
+import sys
+import collections
+
+
+def pickingNumbers(a):
+    counter = collections.Counter(a)
+    maxm = counter[max(counter.keys(), key=(lambda k: counter[k]))]
+    if len(counter) > 1:
+        for key_1 in counter:
+            for key_2 in counter:
+                if abs(key_1-key_2) == 1:
+                    temp = counter[key_1]+counter[key_2]
+                    if maxm < temp:
+                        maxm = temp
+    else:
+        return counter.values()[0]
+    return maxm
+                
+                
+            
+#
+   
+
+if __name__ == "__main__":
+    n = int(raw_input().strip())
+    a = map(int, raw_input().strip().split(' '))
+    result = pickingNumbers(a)
+    print result
+
+
+
+
+
+
+Simple solution from others
+----------------
+
+#!/bin/python
+
+import sys
+
+
+n = int(raw_input().strip())
+a = map(int,raw_input().strip().split(' '))
+
+a.sort()
+ans = 0
+for i in xrange(n):
+    for j in xrange(n):
+        if abs(a[j] - a[i]) <= 1:
+            ans = max(ans, j - i + 1)
+print ans

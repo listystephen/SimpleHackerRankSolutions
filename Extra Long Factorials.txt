@@ -1,0 +1,28 @@
+Problem
+-------
+Factorial of large number
+
+
+#!/bin/python
+
+import sys
+
+def extraLongFactorials(n):
+    res = 0
+    temp = 1
+    if n!=1:
+        for i in range(n,1,-1):
+            res = temp*i
+            temp = res
+        return res
+    else:
+        return 1
+        
+        
+        
+        
+    # Complete this function
+
+if __name__ == "__main__":
+    n = int(raw_input().strip())
+    print extraLongFactorials(n)
